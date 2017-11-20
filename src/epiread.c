@@ -176,7 +176,7 @@ static void format_epiread(kstring_t *epi, bam1_t *b, refcache_t *rs, uint8_t bs
           } else {              /* BS-seq */
             
             char rb0 = toupper(getbase_refcache(rs, rpos+j-1));
-            if (rb0 == 'C') {	/* CpG context */
+           /* if (rb0 == 'C') {	/* CpG context */
               /* Note: measure G in CpG context, record location of C */
               if (first_cg < 0) first_cg = (int) rpos+j-1;
               if (qb == 'A') {
@@ -186,7 +186,7 @@ static void format_epiread(kstring_t *epi, bam1_t *b, refcache_t *rs, uint8_t bs
               } else {
                 kputc('N', &ecg);
               }
-            }
+            /* }
           }
         }
         
@@ -221,7 +221,7 @@ static void format_epiread(kstring_t *epi, bam1_t *b, refcache_t *rs, uint8_t bs
 
           } else {              /* BS-seq */
             char rb1 = toupper(getbase_refcache(rs, rpos+j+1));
-            if (rb1 == 'G') {	/* CpG context */
+            /* if (rb1 == 'G') {	/* CpG context */
               if (first_cg < 0) first_cg = (int) rpos+j;
               if (qb == 'T') {
                 kputc('T', &ecg);
@@ -231,7 +231,7 @@ static void format_epiread(kstring_t *epi, bam1_t *b, refcache_t *rs, uint8_t bs
                 kputc('N', &ecg);
               }
             }
-          }
+          /* }
         }
 
         /* append SNP info if present */
